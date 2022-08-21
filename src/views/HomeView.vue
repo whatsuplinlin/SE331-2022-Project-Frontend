@@ -89,7 +89,7 @@ export default {
       })
 
       .catch(() => {
-        next({ name: 'NetworkError' })
+        next({ name: 'NetWorkError' })
       })
   },
   beforeRouteUpdate(routeTo, routeFrom, next) {
@@ -103,7 +103,7 @@ export default {
         next()
       })
       .catch(() => {
-        next({ name: 'NetworkError' })
+        next({ name: 'NetWorkError' })
       })
   },
   computed: {

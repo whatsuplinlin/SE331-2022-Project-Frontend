@@ -6,6 +6,8 @@ import DoctorComment from '../views/event/DoctorComment.vue'
 import VaccineDetail from '../views/event/VaccineDetail.vue'
 import PatientService from '@/service/PatientService.js'
 import CommentHistoryService from '@/service/CommentHistoryService.js'
+import NotFound from '../views/NotFound.vue'
+import NetWorkError from '../views/NetworkError.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
 
@@ -34,21 +36,39 @@ const routes = [
             )
           })
           .catch((error) => {
-            console.log(error)
+            if (error.response && error.response.status == 404) {
+              return {
+                name: '404Resource'
+              }
+            } else {
+              return { name: 'NetWorkError' }
+            }
           }),
         PatientService.getVaccine(to.params.id)
           .then((response) => {
             GStore.vaccines = response.data
           })
           .catch((error) => {
-            console.log(error)
+            if (error.response && error.response.status == 404) {
+              return {
+                name: '404Resource'
+              }
+            } else {
+              return { name: 'NetWorkError' }
+            }
           }),
         CommentHistoryService.getCommentHistory(to.params.id)
           .then((response) => {
             GStore.commentsHistory = response.data
           })
           .catch((error) => {
-            console.log(error)
+            if (error.response && error.response.status == 404) {
+              return {
+                name: '404Resource'
+              }
+            } else {
+              return { name: 'NetWorkError' }
+            }
           })
       )
     },
@@ -72,6 +92,22 @@ const routes = [
         props: true
       }
     ]
+  },
+  {
+    path: '/404',
+    name: '404Resource',
+    component: NotFound,
+    props: true
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
+  },
+  {
+    path: '/network-error',
+    name: 'NetWorkError',
+    component: NetWorkError
   }
 ]
 
