@@ -1,10 +1,32 @@
 <template>
   <div class="networkError">
-    <h1>Sad</h1>
-    <h3>
-      It looks like you're experiencing some network issues, please take a
-      breath and
-      <a href="#" @click="$router.go(-1)">click here</a> to try again.
-    </h3>
+    <img
+      src="https://images-ext-1.discordapp.net/external/7CjJpwwtNFVBPN0UcR0IzIi91xWvywhyN3haTD_OljM/%3Fk%3D20%26m%3D1301337122%26s%3D612x612%26w%3D0%26h%3DREAzf6wr2yDFMIUTymYzHbG2zjEsyjOuTapwSo4q9Rw%3D/https/media.istockphoto.com/vectors/internet-not-connected-icon-vector-id1301337122"
+      class="image"
+    />
+    <h2>NETWORK ERROR❗️</h2>
+    <h3>Please check your internet connection</h3>
+    <h3><a href="#" @click="$router.go(-1)">Click Here To Try Again</a></h3>
   </div>
 </template>
+<style scoped>
+.image {
+  width: 250px;
+  height: 250px;
+  margin: 50px;
+}
+
+h2 {
+  color: red;
+}
+
+.h3,
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
