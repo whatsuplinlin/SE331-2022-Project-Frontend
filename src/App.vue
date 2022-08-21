@@ -40,4 +40,6 @@ body {
   padding: 40px;
   background: #eff9fe;
 }
+
+@import '~bootstrap/dist/css/bootstrap.css';
 </style>

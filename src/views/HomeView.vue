@@ -119,4 +119,42 @@ export default {
   width: 90px;
   height: 120px;
 }
+
+#pagination {
+  margin: auto;
+  font-size: 70px;
+}
+
+#pagination a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.clicking:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+table {
+  margin: auto;
+  margin-top: 50px;
+}
+
+th {
+  background: #161240;
+  color: #eff9fe;
+  font-weight: 100;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  padding: 10px;
+}
+
+tr {
+  border-top: 1px solid #161240;
+  background: #eff9fe;
+}
 </style>
