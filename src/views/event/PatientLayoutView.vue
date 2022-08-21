@@ -28,3 +28,17 @@ export default {
   inject: ['GStore']
 }
 </script>
+<style scoped>
+#navbar {
+  background: #161240;
+  padding: 10px;
+}
+
+#navbar a {
+  color: #eff9fe;
+}
+
+#border {
+  border-left: solid white 1px;
+}
+</style>
