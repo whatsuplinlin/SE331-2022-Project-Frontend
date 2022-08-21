@@ -9,3 +9,24 @@
     <h3><a href="#" @click="$router.go(-1)">Click Here To Try Again</a></h3>
   </div>
 </template>
+<style scoped>
+.image {
+  width: 250px;
+  height: 250px;
+  margin: 50px;
+}
+
+h2 {
+  color: red;
+}
+
+.h3,
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
