@@ -32,6 +32,10 @@ export default {
         alert('Comment incomplete. Please fill out every field.')
         return
       }
+      this.GStore.flashMessage = 'The comment is being added '
+      setTimeout(() => {
+        this.GStore.flashMessage = ''
+      }, 3500)
       let doctorComment = {
         patient_id: GStore.patient.id,
         patient_name: GStore.patient.name,
