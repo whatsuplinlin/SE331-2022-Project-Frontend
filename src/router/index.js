@@ -29,6 +29,9 @@ const routes = [
         PatientService.getPatient(to.params.id)
           .then((response) => {
             GStore.patient = response.data
+            GStore.patient.doctorRec = GStore.comments.filter(
+              (patient) => GStore.patient.id == patient.patient_id
+            )
           })
           .catch((error) => {
             console.log(error)
