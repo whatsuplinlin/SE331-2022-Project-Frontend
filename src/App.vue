@@ -15,38 +15,31 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
 @keyframes fade {
   from {
     background: #f9ffc2;
   }
-
   to {
     background: transparent;
   }
 }
-
 #flashMessage {
   animation-name: fade;
   animation-duration: 5s;
 }
+body {
+  background: #7da1d4;
+}
+
+.title {
+  padding: 40px;
+  background: #eff9fe;
+}
+
+@import '~bootstrap/dist/css/bootstrap.css';
 </style>
