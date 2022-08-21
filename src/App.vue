@@ -1,8 +1,7 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <div class="title">
+    <h1>🏥 COVID-19 VACCINATION 💉</h1>
+  </div>
   <router-view />
 </template>
 
