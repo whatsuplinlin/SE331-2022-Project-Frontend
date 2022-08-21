@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/whatsuplinlin/covid19-vaccination',
+  baseURL:
+    'https://my-json-server.typicode.com/whatsuplinlin/covid19-vaccination',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
