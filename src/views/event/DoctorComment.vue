@@ -1,10 +1,16 @@
 <template>
-  <CommentForm @comment-submited="addComment" />
-  <CommentList
-    v-if="GStore.comments"
-    :comments="GStore.patient.doctorRec"
-    :commentsHistory="GStore.commentsHistory"
-  />
+  <div class="row">
+    <div class="col-6">
+      <CommentForm @comment-submited="addComment" />
+    </div>
+    <div class="col-6">
+      <CommentList
+        v-if="GStore.comments"
+        :comments="GStore.patient.doctorRec"
+        :commentsHistory="GStore.commentsHistory"
+      />
+    </div>
+  </div>
 </template>
 <script>
 import CommentForm from '@/components/CommentForm.vue'
