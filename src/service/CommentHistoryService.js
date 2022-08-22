@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL:
-    'https://my-json-server.typicode.com/whatsuplinlin/covid19-doctor-comment-history',
+  baseURL: process.env.VUE_APP_BACKEND_COMMENTHISTORY_URL,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
