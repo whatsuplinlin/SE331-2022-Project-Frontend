@@ -118,6 +118,7 @@ export default {
 .image {
   width: 90px;
   height: 120px;
+  border-radius: 4px;
 }
 
 #pagination {
