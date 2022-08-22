@@ -17,6 +17,11 @@ This project is to present the information about the people who have been vaccin
 
 ---
 
+## ◼️ Web Application Url
+[Click Here](https://se331-2022-project-1.web.app/)
+
+---
+
 ## ◼️ Page Explanation
 ### 1. Home Page
 
@@ -99,8 +104,3 @@ npm run build
 ```
 npm run lint
 ```
-
----
-
-## ◼️ Web Application Url
-[Click Here](https://se331-2022-project-1.web.app/)
