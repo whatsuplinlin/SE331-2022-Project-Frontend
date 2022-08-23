@@ -5,7 +5,6 @@ import PatientDetailView from '../views/event/PatientDetailView.vue'
 import DoctorComment from '../views/event/DoctorComment.vue'
 import VaccineDetail from '../views/event/VaccineDetail.vue'
 import PatientService from '@/service/PatientService.js'
-import CommentHistoryService from '@/service/CommentHistoryService.js'
 import NotFound from '../views/NotFound.vue'
 import NetWorkError from '../views/NetworkError.vue'
 import NProgress from 'nprogress'
@@ -18,7 +17,7 @@ const routes = [
     component: HomeView,
     props: (route) => ({
       page: parseInt(route.query.page) || 1,
-      perPage: parseInt(route.query.perPage) || 5
+      perPage: parseInt(route.query.perPage) || 4
     })
   },
   {
@@ -27,50 +26,22 @@ const routes = [
     props: true,
     component: PatientLayoutView,
     beforeEnter: (to) => {
-      return (
-        PatientService.getPatient(to.params.id)
-          .then((response) => {
-            GStore.patient = response.data
-            GStore.patient.doctorRec = GStore.comments.filter(
-              (patient) => GStore.patient.id == patient.patient_id
-            )
-          })
-          .catch((error) => {
-            if (error.response && error.response.status == 404) {
-              return {
-                name: '404Resource'
-              }
-            } else {
-              return { name: 'NetWorkError' }
+      return PatientService.getPatient(to.params.id)
+        .then((response) => {
+          GStore.patient = response.data
+          GStore.patient.doctorRec = GStore.comments.filter(
+            (patient) => GStore.patient.id == patient.patient_id
+          )
+        })
+        .catch((error) => {
+          if (error.response && error.response.status == 404) {
+            return {
+              name: '404Resource'
             }
-          }),
-        PatientService.getVaccine(to.params.id)
-          .then((response) => {
-            GStore.vaccines = response.data
-          })
-          .catch((error) => {
-            if (error.response && error.response.status == 404) {
-              return {
-                name: '404Resource'
-              }
-            } else {
-              return { name: 'NetWorkError' }
-            }
-          }),
-        CommentHistoryService.getCommentHistory(to.params.id)
-          .then((response) => {
-            GStore.commentsHistory = response.data
-          })
-          .catch((error) => {
-            if (error.response && error.response.status == 404) {
-              return {
-                name: '404Resource'
-              }
-            } else {
-              return { name: 'NetWorkError' }
-            }
-          })
-      )
+          } else {
+            return { name: 'NetWorkError' }
+          }
+        })
     },
     children: [
       {
