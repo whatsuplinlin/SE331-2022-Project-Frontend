@@ -3,7 +3,7 @@
     <h4>Doctor Comment</h4>
     <div
       id="comment"
-      v-for="commentHistory in commentsHistory.comment"
+      v-for="commentHistory in commentsHistory.commentList"
       :key="commentHistory"
     >
       <p>-----------------------------------</p>

@@ -6,7 +6,10 @@
         <th>TYPE</th>
         <th>DATE</th>
       </tr>
-      <tr v-for="vaccine in patient.vaccine" :key="vaccine">
+      {{
+        patient.vaccineList
+      }}
+      <tr v-for="vaccine in patient.vaccineList" :key="vaccine.id">
         <td>{{ vaccine.number }}</td>
         <td>{{ vaccine.type }}</td>
         <td>{{ vaccine.date }}</td>

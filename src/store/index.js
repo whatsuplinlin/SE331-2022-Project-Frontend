@@ -3,5 +3,6 @@ import { reactive } from 'vue'
 export default reactive({
   flashMessage: '',
   comments: [],
-  patient: null
+  patient: null,
+  currentUser: JSON.parse(localStorage.getItem('user'))
 })

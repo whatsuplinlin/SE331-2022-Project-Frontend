@@ -9,6 +9,7 @@ import NotFound from '../views/NotFound.vue'
 import NetWorkError from '../views/NetworkError.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
+import Login from '@/views/LoginFormView.vue'
 
 const routes = [
   {
@@ -29,9 +30,9 @@ const routes = [
       return PatientService.getPatient(to.params.id)
         .then((response) => {
           GStore.patient = response.data
-          GStore.patient.doctorRec = GStore.comments.filter(
-            (patient) => GStore.patient.id == patient.patient_id
-          )
+          // GStore.patient.doctorRec = GStore.comments.filter(
+          //   (patient) => GStore.patient.id == patient.patient_id
+          // )
         })
         .catch((error) => {
           if (error.response && error.response.status == 404) {
@@ -79,6 +80,11 @@ const routes = [
     path: '/network-error',
     name: 'NetWorkError',
     component: NetWorkError
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 

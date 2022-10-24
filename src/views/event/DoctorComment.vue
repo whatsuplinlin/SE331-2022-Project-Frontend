@@ -16,20 +16,26 @@
 import CommentForm from '@/components/CommentForm.vue'
 import CommentList from '@/components/CommentList.vue'
 import GStore from '@/store'
-
+import CommentService from '@/service/CommentService.js'
 export default {
   inject: ['GStore'],
   components: {
     CommentForm,
     CommentList
   },
+  data() {
+    return {
+      newComment: null
+    }
+  },
   methods: {
     addComment(comment) {
       console.log(comment)
       GStore.comments.push(comment)
-      GStore.patient.doctorRec = GStore.comments.filter(
-        (patient) => GStore.patient.id == patient.patient_id
-      )
+      // GStore.patient.doctorRec = GStore.comments.filter(
+      //   (patient) => GStore.patient.id == patient.patient_id
+      // )
+      CommentService.addComment(GStore.patient.id, comment)
     }
   }
 }
