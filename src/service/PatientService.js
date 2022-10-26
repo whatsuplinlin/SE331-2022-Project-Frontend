@@ -1,13 +1,13 @@
-import axios from 'axios'
-
-const apiClient = axios.create({
-  baseURL: 'http://localhost:8080',
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-})
+// import axios from 'axios'
+import apiClient from '@/service/AxiosClient.js'
+// const apiClient = axios.create({
+//   baseURL: 'http://localhost:8080',
+//   withCredentials: false,
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json'
+//   }
+// })
 
 export default {
   getPatients(page, perPage) {
@@ -21,5 +21,14 @@ export default {
   },
   getComment(id) {
     return apiClient.get('people/' + id + '/comment')
+  },
+  uploadFile(file) {
+    let formData = new FormData()
+    formData.append('file', file)
+    return apiClient.post('/uploadFile', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
   }
 }

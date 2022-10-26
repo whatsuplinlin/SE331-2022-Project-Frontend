@@ -10,7 +10,7 @@ import NetWorkError from '../views/NetworkError.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
 import Login from '@/views/LoginFormView.vue'
-
+import Register from '@/views/RegisterFormView.vue'
 const routes = [
   {
     path: '/',
@@ -85,6 +85,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   }
 ]
 
