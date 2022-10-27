@@ -9,6 +9,26 @@
       <Form @submit="handleRegiter" :validation-schema="schema">
         <div v-if="!successful">
           <div class="form-group">
+            <label for="firstname">First Name </label>
+            <Field name="firstname" type="firstname" class="form-control" />
+            <ErrorMessage name="firstname" class="error-feedback" />
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <Field name="lastname" type="lastname" class="form-control" />
+            <ErrorMessage name="lastname" class="error-feedback" />
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <Field name="age" type="age" class="form-control" />
+            <ErrorMessage name="age" class="error-feedback" />
+          </div>
+          <div class="form-group">
+            <label for="hometown">Hometown</label>
+            <Field name="hometown" type="hometown" class="form-control" />
+            <ErrorMessage name="hometown" class="error-feedback" />
+          </div>
+          <div class="form-group">
             <label for="username">Username</label>
             <Field name="username" type="text" class="form-control" />
             <ErrorMessage name="username" class="error-feedback" />
@@ -63,6 +83,16 @@ export default {
   inject: ['GStore'],
   data() {
     const schema = yup.object().shape({
+      firstname: yup
+        .string()
+        .required('First name is required!')
+        .min(3, 'Must be at least 3 charaacter!')
+        .max(20, 'Must be maximum 20 characters!'),
+      lastname: yup
+        .string()
+        .required('Last name is required!')
+        .min(3, 'Must be at least 3 charaacter!')
+        .max(20, 'Must be maximum 20 characters!'),
       username: yup
         .string()
         .required('Username is required!')
@@ -74,6 +104,15 @@ export default {
         .email('Email is invalid!')
         .max(50, 'Must be maxi,u, 50 characters!'),
       password: yup
+        .string()
+        .required('Password is required!')
+        .min(6, 'Must be at least 6 characters!')
+        .max(40, 'Must be maximum 40 characters!'),
+      age: yup
+        .string()
+        .min(1, 'Must be at least 1 characters!')
+        .max(3, 'Must be maximum 3 characters!'),
+      hometown: yup
         .string()
         .required('Password is required!')
         .min(6, 'Must be at least 6 characters!')

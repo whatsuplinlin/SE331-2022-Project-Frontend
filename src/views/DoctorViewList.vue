@@ -13,22 +13,24 @@
       </router-link>
     </div>
     <div class="col-6">
+      <h1>Doctor List</h1>
       <table>
         <tr>
           <th></th>
-          <th>NAME</th>
-          <th>VACCINATION STATUS</th>
+          <th>Name</th>
+          <th>Lastname</th>
         </tr>
         <tr
-          @click="details(patient.id)"
-          v-for="patient in patients"
-          :key="patient.id"
-          :patient="patient"
+          v-for="doctor in doctors"
+          :key="doctor.id"
+          :doctor="doctor"
           class="clicking"
         >
-          <td><img :src="patient.image" class="image" /></td>
-          <td>{{ patient.name }} {{ patient.surname }}</td>
-          <td>{{ patient.status }}</td>
+          <td><img :src="doctor.image" class="image" /></td>
+          <td>{{ doctor.name }}</td>
+          <td>{{ doctor.surname }}</td>
+          <!-- <td>{{ user.email }}</td> -->
+          <!-- <td>{{ user.authorities }}</td> -->
         </tr>
       </table>
     </div>
@@ -48,11 +50,9 @@
 </template>
 
 <script>
-import PatientService from '../service/PatientService.js'
-import AuthService from '@/service/AuthService'
+import DoctorService from '../service/DoctorService.js'
 export default {
-  inject: ['GStore'],
-  name: 'PatientView',
+  name: 'DoctorView',
   props: {
     page: {
       type: Number,
@@ -73,20 +73,20 @@ export default {
   },
   data() {
     return {
-      patients: null,
-      totalPatients: 0
+      doctors: null,
+      totalDoctors: 0
     }
   },
   /* eslint-disable-next-line no-unused-vars */
   beforeRouteEnter(routeTo, routeFrom, next) {
-    PatientService.getPatients(
+    DoctorService.getDoctors(
       parseInt(routeTo.query.page) || 1,
       parseInt(routeTo.query.perPage) || 4
     )
       .then((response) => {
         next((comp) => {
-          comp.patients = response.data
-          comp.totalPatients = response.headers['x-total-count']
+          comp.doctors = response.data
+          comp.totalDoctors = response.headers['x-total-count']
         })
       })
 
@@ -95,13 +95,13 @@ export default {
       })
   },
   beforeRouteUpdate(routeTo, routeFrom, next) {
-    PatientService.getPatients(
+    DoctorService.getDoctors(
       parseInt(routeTo.query.page) || 1,
       parseInt(routeTo.query.perPage) || 4
     )
       .then((response) => {
-        this.patients = response.data
-        this.totalPatients = response.headers['x-total-count']
+        this.doctors = response.data
+        this.totalDoctors = response.headers['x-total-count']
         next()
       })
       .catch(() => {
@@ -110,11 +110,8 @@ export default {
   },
   computed: {
     hasNextPage() {
-      let totalPages = Math.ceil(this.totalPatients / this.perPage)
+      let totalPages = Math.ceil(this.totalDoctors / this.perPage)
       return this.page < totalPages
-    },
-    isPatient() {
-      return AuthService.hasRoles('ROLE_PATIENT')
     }
   }
 }

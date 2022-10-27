@@ -52,10 +52,14 @@ export default {
   register(user) {
     console.log(user)
     return apiClient.post('/register', {
+      firstname: user.firstname,
+      lastname: user.lastname,
       username: user.username,
       email: user.email,
       password: user.password,
-      image: user.image
+      image: user.image,
+      age: user.age,
+      hometown: user.hometown
     })
   }
 }

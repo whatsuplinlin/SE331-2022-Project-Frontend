@@ -15,13 +15,6 @@
       <p>Date: {{ commentHistory.date }}</p>
       <p>Comment: {{ commentHistory.comment }}</p>
     </div>
-    <div id="comment" v-for="(comment, index) in comments" :key="index">
-      <p>-----------------------------------</p>
-      <p>Patient: {{ comment.patient_name }} {{ comment.patient_surname }}</p>
-      <p>Doctor: {{ comment.name }}</p>
-      <p>Date: {{ comment.date }}</p>
-      <p>Comment: {{ comment.comment }}</p>
-    </div>
   </div>
 </template>
 <script>

@@ -4,8 +4,14 @@
   </div>
   <div class="title">
     <h1>🏥 COVID-19 VACCINATION 💉</h1>
+
     <div id="nav">
       <nav class="navbar navbar-expand">
+        <span v-if="isAdmin">
+          <router-link :to="{ name: 'home' }">Patient List </router-link> |
+          <router-link :to="{ name: 'user' }">User List </router-link> |
+          <router-link :to="{ name: 'doctor' }">Doctor List </router-link> |
+        </span>
         <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
           <li class="nav-item">
             <router-link to="/register" class="nav-link">
