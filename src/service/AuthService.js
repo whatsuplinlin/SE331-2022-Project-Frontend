@@ -59,6 +59,37 @@ export default {
       password: user.password,
       image: user.image,
       age: user.age,
+      gender: user.gender,
+      hometown: user.hometown
+    })
+  },
+  changeRole(user) {
+    console.log(user)
+    return apiClient.post('/changeRole', {
+      id: user.id,
+      name: user.firstname,
+      surname: user.lastname,
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      gender: user.gender,
+      image: user.image,
+      age: user.age,
+      hometown: user.hometown
+    })
+  },
+  changeRoleToDoctor(user) {
+    console.log(user)
+    return apiClient.post('/changeRoleToDoctor', {
+      id: user.id,
+      name: user.firstname,
+      surname: user.lastname,
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      gender: user.gender,
+      image: user.image,
+      age: user.age,
       hometown: user.hometown
     })
   }

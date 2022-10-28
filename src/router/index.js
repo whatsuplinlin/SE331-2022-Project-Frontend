@@ -1,20 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import PatientLayoutView from '../views/event/PatientLayoutView.vue'
-import PatientDetailView from '../views/event/PatientDetailView.vue'
-import DoctorComment from '../views/event/DoctorComment.vue'
-import VaccineDetail from '../views/event/VaccineDetail.vue'
+import PatientLayoutView from '../views/patient/PatientLayoutView.vue'
+import PatientDetailView from '../views/patient/PatientDetailView.vue'
+import DoctorComment from '../views/patient/DoctorComment.vue'
+import VaccineDetail from '../views/patient/VaccineDetail.vue'
 import PatientService from '@/service/PatientService.js'
 import NotFound from '../views/NotFound.vue'
 import NetWorkError from '../views/NetworkError.vue'
 import NProgress from 'nprogress'
 import GStore from '@/store'
-import Login from '@/views/LoginFormView.vue'
-import Register from '@/views/RegisterFormView.vue'
-import UserListView from '@/views/UserListView.vue'
-import DoctorListView from '@/views/DoctorViewList.vue'
-import AddDoctorComment from '../views/event/AddDoctorComment.vue'
+import Login from '@/views/user/LoginFormView.vue'
+import Register from '@/views/user/RegisterFormView.vue'
+import UserListView from '@/views/user/UserListView.vue'
+import DoctorListView from '@/views/doctor/DoctorViewList.vue'
+import AddDoctorComment from '../views/patient/AddDoctorComment.vue'
 import LandingPage from '@/views/LandingPage.vue'
+import ChangeRole from '@/views/user/ChangeRole.vue'
+import ChangeRoleToDoctor from '@/views/user/ChangeRoleToDoctor.vue'
+import UserService from '@/service/UserService'
+import UserLayout from '../views/user/UserLayout.vue'
+import DoctorService from '@/service/DoctorService'
+import DoctorDetail from '@/views/doctor/DoctorDetail.vue'
+import DoctorPatientList from '@/views/doctor/DoctorPatientList.vue'
 //import AuthService from '@/service/AuthService'
 const routes = [
   {
@@ -28,16 +35,25 @@ const routes = [
           params: { id: GStore.currentUser.id }
         }
       }
-      if (GStore.currentUser.authorities == 'ROLE_ADMIN') {
-        return {
-          name: 'user'
-        }
+      return {
+        name: 'home'
       }
-      if (GStore.currentUser.authorities == 'ROLE_DOCTOR') {
-        return {
-          name: 'home'
-        }
-      }
+    }
+  },
+  {
+    path: '/doctorsPatient',
+    name: 'DoctorPatient',
+    component: DoctorPatientList,
+    beforeEnter: () => {
+      return DoctorService.getAllDoctor()
+        .then((response) => {
+          console.log(GStore.doctor)
+          GStore.doctor = response.data
+        })
+        .catch(() => {
+          GStore.doctor = null
+          console.log('cannot load doctor')
+        })
     }
   },
   {
@@ -69,13 +85,14 @@ const routes = [
   },
   {
     path: '/',
-    name: 'PatientLayout',
+    name: 'UserLayout',
     props: true,
-    component: PatientLayoutView,
+    component: UserLayout,
     beforeEnter: (to) => {
-      return PatientService.getPatient(to.params.id)
+      return UserService.getUser(to.params.id)
         .then((response) => {
-          GStore.patient = response.data
+          GStore.user = response.data
+          console.log(GStore.user)
           // GStore.patient.doctorRec = GStore.comments.filter(
           //   (patient) => GStore.patient.id == patient.patient_id
           // )
@@ -89,6 +106,91 @@ const routes = [
             return { name: 'NetWorkError' }
           }
         })
+    },
+    children: [
+      {
+        path: 'changeRole/:id',
+        name: 'ChangeRole',
+        component: ChangeRole,
+        props: true,
+        beforeEnter: () => {
+          return DoctorService.getAllDoctor()
+            .then((response) => {
+              console.log(GStore.doctor)
+              GStore.doctor = response.data
+            })
+            .catch(() => {
+              GStore.doctor = null
+              console.log('cannot load doctor')
+            })
+        }
+      },
+      {
+        path: 'changeRoleToDoctor/:id',
+        name: 'ChangeRoleToDoctor',
+        component: ChangeRoleToDoctor,
+        props: true
+      }
+    ]
+  },
+  {
+    path: '/',
+    name: 'DoctorDetail',
+    props: true,
+    component: DoctorDetail,
+    beforeEnter: (to) => {
+      return DoctorService.getDoctor(to.params.id)
+        .then((response) => {
+          GStore.doctor = response.data
+          console.log(GStore.doctor)
+          // GStore.patient.doctorRec = GStore.comments.filter(
+          //   (patient) => GStore.patient.id == patient.patient_id
+          // )
+        })
+        .catch((error) => {
+          if (error.response && error.response.status == 404) {
+            return {
+              name: '404Resource'
+            }
+          } else {
+            return { name: 'NetWorkError' }
+          }
+        })
+    }
+  },
+  {
+    path: '/',
+    name: 'PatientLayout',
+    props: true,
+    component: PatientLayoutView,
+    beforeEnter: (to) => {
+      return (
+        PatientService.getPatient(to.params.id)
+          .then((response) => {
+            GStore.patient = response.data
+            // GStore.patient.doctorRec = GStore.comments.filter(
+            //   (patient) => GStore.patient.id == patient.patient_id
+            // )
+          })
+          .catch((error) => {
+            if (error.response && error.response.status == 404) {
+              return {
+                name: '404Resource'
+              }
+            } else {
+              return { name: 'NetWorkError' }
+            }
+          }),
+        DoctorService.getAllDoctor()
+          .then((response) => {
+            console.log(GStore.doctor)
+            GStore.doctor = response.data
+          })
+          .catch(() => {
+            GStore.doctor = null
+            console.log('cannot load doctor')
+          })
+      )
     },
     children: [
       {

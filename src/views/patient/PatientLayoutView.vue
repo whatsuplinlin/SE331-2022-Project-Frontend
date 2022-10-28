@@ -25,6 +25,11 @@
             >ADD COMMENT</router-link
           >
         </div>
+        <div v-if="isAdmin" class="col" id="border">
+          <router-link :to="{ name: 'AddDoctorComment' }"
+            >ADD VACCINE</router-link
+          >
+        </div>
       </div>
     </div>
     <router-view :patient="GStore.patient" />
@@ -37,6 +42,9 @@ export default {
   computed: {
     isDoctor() {
       return AuthService.hasRoles('ROLE_DOCTOR')
+    },
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
     }
   }
 }

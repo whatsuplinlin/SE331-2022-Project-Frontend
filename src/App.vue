@@ -10,7 +10,13 @@
         <span v-if="isAdmin">
           <router-link :to="{ name: 'home' }">Patient List </router-link> |
           <router-link :to="{ name: 'user' }">User List </router-link> |
-          <router-link :to="{ name: 'doctor' }">Doctor List </router-link> |
+          <router-link :to="{ name: 'doctor' }">Doctor List </router-link>
+        </span>
+        <span v-if="isDoctor">
+          <router-link :to="{ name: 'home' }">Patient List </router-link> |
+          <router-link :to="{ name: 'DoctorPatient' }"
+            >Your Patient
+          </router-link>
         </span>
         <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -53,6 +59,9 @@ export default {
     },
     isAdmin() {
       return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     }
   },
   methods: {

@@ -19,6 +19,11 @@
             <ErrorMessage name="lastname" class="error-feedback" />
           </div>
           <div class="form-group">
+            <label for="gender">Gender</label>
+            <Field name="gender" type="gender" class="form-control" />
+            <ErrorMessage name="gender" class="error-feedback" />
+          </div>
+          <div class="form-group">
             <label for="age">Age</label>
             <Field name="age" type="age" class="form-control" />
             <ErrorMessage name="age" class="error-feedback" />
@@ -116,7 +121,8 @@ export default {
         .string()
         .required('Password is required!')
         .min(6, 'Must be at least 6 characters!')
-        .max(40, 'Must be maximum 40 characters!')
+        .max(40, 'Must be maximum 40 characters!'),
+      gender: yup.string()
     })
     return {
       successful: false,
@@ -144,7 +150,7 @@ export default {
         user.image = response.map((r) => r.data).toString()
         AuthService.register(user)
           .then(() => {
-            this.$router.push({ path: '/' })
+            this.$router.push({ path: '/login' })
           })
           .catch(() => {
             this.message = 'could not register'

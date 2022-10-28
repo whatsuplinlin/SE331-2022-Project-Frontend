@@ -22,7 +22,7 @@
           <th>Email</th>
         </tr>
         <tr
-          @click="details(patient.id)"
+          @click="details(user.id)"
           v-for="user in users"
           :key="user.id"
           :user="user"
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import UserService from '../service/UserService.js'
+import UserService from '@/service/UserService.js'
 export default {
   name: 'UserView',
   props: {
@@ -67,8 +67,9 @@ export default {
   },
   methods: {
     details(id) {
+      console.log(id)
       this.$router.push({
-        name: 'PatientDetailView',
+        name: 'ChangeRole',
         params: { id: id }
       })
     }

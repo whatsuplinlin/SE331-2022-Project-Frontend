@@ -1,23 +1,30 @@
 <template>
   <div class="row">
-    <div class="col-12">
+    <div v-if="isDoctor" class="col">
       <CommentForm @comment-submited="addComment" />
+    </div>
+    <div v-if="isAdmin" class="col">
+      <VaccineForm @comment-submited="addVaccine" />
     </div>
   </div>
 </template>
 <script>
 import CommentForm from '@/components/CommentForm.vue'
-//import AuthService from '@/service/AuthService'
+import VaccineForm from '@/components/VaccineForm.vue'
+import AuthService from '@/service/AuthService'
+import VaccineService from '@/service/VaccineService.js'
 import GStore from '@/store'
 import CommentService from '@/service/CommentService.js'
 export default {
   inject: ['GStore'],
   components: {
-    CommentForm
+    CommentForm,
+    VaccineForm
   },
   data() {
     return {
-      newComment: null
+      newComment: null,
+      nweVaccine: null
     }
   },
   methods: {
@@ -28,6 +35,17 @@ export default {
       //   (patient) => GStore.patient.id == patient.patient_id
       // )
       CommentService.addComment(GStore.patient.id, comment)
+    },
+    addVaccine(vaccine) {
+      VaccineService.addVaccine(GStore.patient.id, vaccine)
+    }
+  },
+  computed: {
+    isAdmin() {
+      return AuthService.hasRoles('ROLE_ADMIN')
+    },
+    isDoctor() {
+      return AuthService.hasRoles('ROLE_DOCTOR')
     }
   }
 }

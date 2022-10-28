@@ -3,7 +3,7 @@
     <div class="col-3" id="pagination">
       <router-link
         :to="{
-          name: 'home',
+          name: 'DoctorListView',
           query: { page: page - 1 }
         }"
         rel="prev"
@@ -21,6 +21,7 @@
           <th>Lastname</th>
         </tr>
         <tr
+          @click="details(doctor.id)"
           v-for="doctor in doctors"
           :key="doctor.id"
           :doctor="doctor"
@@ -37,7 +38,7 @@
     <div class="col-3" id="pagination">
       <router-link
         :to="{
-          name: 'home',
+          name: 'DoctorListView',
           query: { page: page + 1 }
         }"
         rel="next"
@@ -50,7 +51,7 @@
 </template>
 
 <script>
-import DoctorService from '../service/DoctorService.js'
+import DoctorService from '@/service/DoctorService'
 export default {
   name: 'DoctorView',
   props: {
@@ -65,8 +66,9 @@ export default {
   },
   methods: {
     details(id) {
+      console.log(id)
       this.$router.push({
-        name: 'PatientDetailView',
+        name: 'DoctorDetail',
         params: { id: id }
       })
     }
