@@ -3,14 +3,10 @@
     <div id="navbar">
       <div class="row">
         <div class="col-6">
-          <router-link :to="{ name: 'ChangeRole' }"
-            >Change role to patient</router-link
-          >
+          <router-link :to="{ name: 'ChangeRole' }">Change Role To Patient</router-link>
         </div>
         <div class="col-6">
-          <router-link :to="{ name: 'ChangeRoleToDoctor' }"
-            >Change role To doctor</router-link
-          >
+          <router-link :to="{ name: 'ChangeRoleToDoctor' }">Change Role To Doctor</router-link>
         </div>
       </div>
     </div>
