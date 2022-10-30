@@ -17,8 +17,8 @@
       <table>
         <tr>
           <th></th>
-          <th>Name</th>
-          <th>Lastname</th>
+          <th>FIRSTNAME</th>
+          <th>LASTNAME</th>
         </tr>
         <tr
           @click="details(doctor.id)"

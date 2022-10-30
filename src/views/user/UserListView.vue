@@ -17,9 +17,9 @@
       <table>
         <tr>
           <th></th>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
+          <th>NAME</th>
+          <th>USERNAME</th>
+          <th>EMAIL</th>
         </tr>
         <tr
           @click="details(user.id)"
