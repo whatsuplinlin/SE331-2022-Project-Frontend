@@ -13,7 +13,7 @@
       </router-link>
     </div>
     <div class="col-6">
-      <h1>Doctor List</h1>
+      <h2>DOCTOR LIST</h2>
       <table>
         <tr>
           <th></th>

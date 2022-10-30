@@ -1,5 +1,5 @@
 <template>
-  <h1>Patient List</h1>
+  <h2>PATIENT LIST</h2>
   <div class="row" id="home">
     <div class="col-3" id="pagination">
       <router-link

@@ -1,10 +1,10 @@
 <template>
-  <h1>Patient List</h1>
+  <h2>YOUR PATIENT</h2>
   <div class="col-12">
     <table>
       <tr>
         <th></th>
-        <th>Name</th>
+        <th>NAME</th>
         <th>VACCINATION STATUS</th>
       </tr>
       <tr

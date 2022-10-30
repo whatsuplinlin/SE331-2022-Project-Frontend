@@ -10,25 +10,23 @@
         <span v-if="isAdmin">
           <div class="row">
             <div class="col" id="col">
-              <router-link id="list" :to="{ name: 'home' }">Patient List</router-link>
+              <router-link id="list" :to="{ name: 'home' }">PATIENT LIST</router-link>
             </div>
             <div class="col" id="col">
-              <router-link id="list" :to="{ name: 'user' }">User List</router-link>
+              <router-link id="list" :to="{ name: 'user' }">USER LIST</router-link>
             </div>
             <div class="col" id="col">
-              <router-link id="list" :to="{ name: 'doctor' }">Doctor List</router-link>
+              <router-link id="list" :to="{ name: 'doctor' }">DOCTOR LIST</router-link>
             </div>
           </div>
         </span>
         <span v-if="isDoctor">
           <div class="row">
             <div class="col" id="col">
-              <router-link id="list" :to="{ name: 'home' }">Patient List
-              </router-link>
+              <router-link id="list" :to="{ name: 'home' }">PATIENT LIST</router-link>
             </div>
             <div class="col" id="col">
-              <router-link id="list" :to="{ name: 'DoctorPatient' }">Your Patient
-              </router-link>
+              <router-link id="list" :to="{ name: 'DoctorPatient' }">YOUR PATIENT</router-link>
             </div>
           </div>
         </span>
@@ -135,6 +133,10 @@ h1 {
 #col {
   width: 150px;
   border-right: 1px solid white;
+}
+
+h2 {
+  padding-top: 50px;
 }
 
 @import '~bootstrap/dist/css/bootstrap.css';
