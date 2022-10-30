@@ -5,14 +5,12 @@
     <p>Age: {{ patient.age }}</p>
     <p>Gender: {{ patient.gender }}</p>
     <p>Hometown: {{ patient.hometown }}</p>
-    <form v-if="isAdmin">
-      <BaseSelect
-        :options="GStore.doctor"
-        v-model="doctorSet.doctor.id"
-        label="Select Doctor"
-      />
-    </form>
-    <button v-if="isAdmin" @click="change">Add doctor</button>
+    <div class="row">
+      <form class="col" v-if="isAdmin">
+        <BaseSelect :options="GStore.doctor" v-model="doctorSet.doctor.id" label="Select a Doctor" />
+      </form>
+      <button v-if="isAdmin" class="col addDoctor" @click="change">Add doctor</button>
+    </div>
   </div>
 </template>
 <script>
@@ -71,5 +69,15 @@ export default {
 
 h4 {
   padding-bottom: 10px;
+}
+
+.addDoctor {
+  width: 150px;
+  height: 35px;
+  margin: 10px;
+  background-color: #161240;
+  border: none;
+  color: white;
+  border-radius: 10px;
 }
 </style>
