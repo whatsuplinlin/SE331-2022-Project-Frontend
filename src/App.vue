@@ -21,9 +21,16 @@
           </div>
         </span>
         <span v-if="isDoctor">
-          <router-link :to="{ name: 'home' }">Patient List </router-link> |
-          <router-link :to="{ name: 'DoctorPatient' }">Your Patient
-          </router-link>
+          <div class="row">
+            <div class="col" id="col">
+              <router-link id="list" :to="{ name: 'home' }">Patient List
+              </router-link>
+            </div>
+            <div class="col" id="col">
+              <router-link id="list" :to="{ name: 'DoctorPatient' }">Your Patient
+              </router-link>
+            </div>
+          </div>
         </span>
         <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
           <li class="nav-item">
