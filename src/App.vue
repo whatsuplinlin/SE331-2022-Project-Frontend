@@ -34,25 +34,25 @@
         </span>
         <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link to="/register" class="nav-link">
+            <router-link id="list" to="/register" class="nav-link">
               <font-awesome-icon icon="user-plus" /> Sign Up
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/login" class="nav-link">
+            <router-link id="list" to="/login" class="nav-link">
               <font-awesome-icon icon="sign-in-alt" /> Login
             </router-link>
           </li>
         </ul>
         <ul v-if="GStore.currentUser" class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link to="/profile" class="nav-link">
+            <router-link id="list" to="/profile" class="nav-link">
               <font-awesome-icon icon="user" />
               {{ GStore.currentUser.name }}
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="logout">
+            <a id="list" class="nav-link" @click="logout">
               <font-awesome-icon icon="sign-out-alt" /> Logout
             </a>
           </li>
