@@ -6,7 +6,7 @@
     <label for="type">Type:</label>
     <input id="type" v-model="type" />
 
-    <label for="date">Date:</label>
+    <label for="date">Date(DD-MM-YYYY):</label>
     <textarea id="date" v-model="date"></textarea>
 
     <input class="button" type="submit" value="Submit" />

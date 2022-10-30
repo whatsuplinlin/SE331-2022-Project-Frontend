@@ -1,12 +1,12 @@
 <template>
-  <h1>Change role to patient</h1>
+  <h1>Change Role To Patient</h1>
   <div class="box">
     <img :src="GStore.user.image" class="image" />
     <h4>Name: {{ GStore.user.firstname }} {{ GStore.user.lastname }}</h4>
     <p>Age: {{ GStore.user.age }}</p>
     <p>Gender: {{ GStore.user.gender }}</p>
     <p>Hometown: {{ GStore.user.hometown }}</p>
-    <button @click="change">Change</button>
+    <button class="change" @click="change">Change</button>
   </div>
 </template>
 <script>
@@ -59,5 +59,14 @@ export default {
 
 h4 {
   padding-bottom: 10px;
+}
+
+.change {
+  width: 100px;
+  height: 35px;
+  background-color: #161240;
+  border: none;
+  color: white;
+  border-radius: 10px;
 }
 </style>
