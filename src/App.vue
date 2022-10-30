@@ -8,14 +8,21 @@
     <div id="nav">
       <nav class="navbar navbar-expand">
         <span v-if="isAdmin">
-          <router-link :to="{ name: 'home' }">Patient List </router-link> |
-          <router-link :to="{ name: 'user' }">User List </router-link> |
-          <router-link :to="{ name: 'doctor' }">Doctor List </router-link>
+          <div class="row">
+            <div class="col" id="col">
+              <router-link id="list" :to="{ name: 'home' }">Patient List</router-link>
+            </div>
+            <div class="col" id="col">
+              <router-link id="list" :to="{ name: 'user' }">User List</router-link>
+            </div>
+            <div class="col" id="col">
+              <router-link id="list" :to="{ name: 'doctor' }">Doctor List</router-link>
+            </div>
+          </div>
         </span>
         <span v-if="isDoctor">
           <router-link :to="{ name: 'home' }">Patient List </router-link> |
-          <router-link :to="{ name: 'DoctorPatient' }"
-            >Your Patient
+          <router-link :to="{ name: 'DoctorPatient' }">Your Patient
           </router-link>
         </span>
         <ul v-if="!GStore.currentUser" class="navbar-nav ml-auto">
@@ -80,25 +87,47 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+
 @keyframes fade {
   from {
     background: #f9ffc2;
   }
+
   to {
     background: transparent;
   }
 }
+
 #flashMessage {
   animation-name: fade;
   animation-duration: 5s;
 }
+
 body {
   background: #7da1d4;
 }
 
 .title {
-  padding: 40px;
   background: #eff9fe;
+}
+
+h1 {
+  padding-top: 40px;
+}
+
+.navbar {
+  background: #d8f2ff;
+  padding: 10px;
+  margin: 40px 0 0;
+}
+
+#list {
+  color: #161240;
+}
+
+#col {
+  width: 150px;
+  border-right: 1px solid white;
 }
 
 @import '~bootstrap/dist/css/bootstrap.css';
