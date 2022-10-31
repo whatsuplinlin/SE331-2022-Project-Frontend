@@ -5,8 +5,12 @@ import {
   faUser,
   faUserPlus,
   faSignInAlt,
-  faSignOutAlt
+  faSignOutAlt,
+  faHospitalUser,
+  faUserDoctor,
+  faUsers,
+  faUserLock
 } from '@fortawesome/free-solid-svg-icons'
-library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt)
+library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt, faHospitalUser, faUserDoctor, faUsers, faUserLock)
 
 export { FontAwesomeIcon }
