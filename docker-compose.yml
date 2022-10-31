@@ -3,4 +3,4 @@ services:
   web:
     image: "whatsuplinlin/se331-2022-project-frontend:latest"
     ports:
-      - 4000:80
+      - 8001:80
