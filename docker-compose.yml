@@ -1,6 +1,6 @@
 version: "3.9"
 services:
   web:
-    image: "whatsuplinlin/se331-2022-project-fronted:latest"
+    image: "whatsuplinlin/se331-2022-project-frontend:latest"
     ports:
       - 8001:80
