@@ -1,4 +1,4 @@
-# < SE331-2022-project-1 >
+# < SE331-2022-Project-Frontend >
 
 ## 🌻 Group Name: Happy Monday 🌻
 
@@ -12,4 +12,12 @@
 
 ## ◼️ Web Application URL
 
-👉🏻 https://se331-2022-project-1.web.app/
+👉🏻 http://34.203.155.108:8001
+
+---
+
+## ◼️ Backend URL
+
+👉🏻 http://34.203.155.108:8999
+
+---
